@@ -5,16 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO.Ports;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace BDKS_06
 {
-    public class JobsWithoutData
+    public class Port
     {
 
         static SerialPort port = new SerialPort("COM0", 57600, Parity.None, 8, StopBits.Two);
         static Crc16 crc = new Crc16();
 
-        public static void OpenPort()
+        public void OpenPort()
         {
             if (!port.IsOpen == true)
             {
@@ -26,6 +27,10 @@ namespace BDKS_06
                 {
                     MessageBox.Show("Выберите порт");
                 }
+                catch (System.UnauthorizedAccessException)
+                {
+                    MessageBox.Show("Доступ к порту закрыт");
+                }
             }
             else
             {
@@ -33,15 +38,17 @@ namespace BDKS_06
             }
 
         }
-        public static void ClosePort() => port.Close();
 
-        public static SerialPort SetPort(string namePort)
+        public void ClosePort() => port.Close();
+
+        public SerialPort SetPort(string namePort)
         {
             port = new SerialPort(namePort, 57600, Parity.None, 8, StopBits.Two);
+
             return port;
         }
 
-        public static string StatusPort()
+        public string StatusPort()
         {
             string status;
 
@@ -54,46 +61,39 @@ namespace BDKS_06
             return status;
         }
 
-        public static string[] GetPortsName()
+        public string[] GetPortsName()
         {
             string[] portsName = SerialPort.GetPortNames();
+
             return portsName;
         }
 
-
-
-        public static byte[] Write(byte[] crcValues)
+        public void Write(byte[] wrtSign)
         {
-            byte[] signature = new byte[crcValues.Length + 2];
-
-            for (int i = 0; i < crcValues.Length; i++)
-            {
-                signature[i] = crcValues[i];
-            }
-
-            crcValues = crc.GetCRC(crcValues, crcValues.Length);
-            signature[signature.Length - 2] = crcValues[0];
-            signature[signature.Length - 1] = crcValues[1];
-
+            
             if (port.IsOpen)
             {
-                try
-                {
-                    port.Write(signature, 0, signature.Length);
-                    var len = port.BytesToRead;
-                    byte[] dataBuffer = new byte[len];
-                    port.Read(signature, 0, signature.Length);
-                    MessageBox.Show("комманда выполнена успешно");
-
-                }
-                catch (TimeoutException) { MessageBox.Show("Ошибка времени выполнения"); }
+                port.WriteTimeout = 1000;
+                port.Write(wrtSign, 0, wrtSign.Length);
             }
             else
             {
                 MessageBox.Show("Порт закрыт");
-
             }
-            return signature;
+        }
+
+        public byte[] Read()
+        {
+            int cnt = port.BytesToRead;
+            byte[] inBuffer = new byte[cnt];
+
+            while (port.BytesToRead > 0)
+            {
+                port.Read(inBuffer, 0, cnt);
+            }
+            Thread.Sleep(1000);
+
+            return inBuffer;
         }
     }
 }

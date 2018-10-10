@@ -6,10 +6,26 @@ using System.Threading.Tasks;
 
 namespace BDKS_06
 {
-    public class Crc16
+    class Crc16
     {
-   
-        public byte[] GetCRC(byte[] buf, int len)
+        public byte [] GetCRC(byte[] crcValues)
+        {
+
+            byte[] signature = new byte[crcValues.Length + 2];
+
+            for (int i = 0; i < crcValues.Length; i++)
+            {
+                signature[i] = crcValues[i];
+            }
+
+            crcValues = CalcCRC(crcValues, crcValues.Length);
+            signature[signature.Length - 2] = crcValues[0];
+            signature[signature.Length - 1] = crcValues[1];
+
+            return signature;
+        }
+
+        private byte[] CalcCRC(byte[] buf, int len)
         {
             UInt16 crc = 0xFFFF;
 
