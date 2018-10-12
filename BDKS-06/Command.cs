@@ -13,7 +13,7 @@ namespace BDKS_06
 
         static byte[] msg { get; set; }
 
-        public static byte[] Comm2(byte b1, byte b2, byte b3, byte b4)
+        public static byte[] Comm2(byte b1 = 0x0, byte b2 = 0x0, byte b3 = 0x0, byte b4 = 0x0)
         {
             msg =new byte[] {
                 0x1,
@@ -31,10 +31,11 @@ namespace BDKS_06
             return msg;
         }
 
-        public static byte[] Comm3(ushort b1,ushort b2)
+        public static byte[] Comm3(ushort b1 = 0x0000,ushort b2 = 0x0000)
         {
             byte[] bytesOne = BitConverter.GetBytes(b1);
             byte[] bytesTwo = BitConverter.GetBytes(b2);
+
             msg = new byte[] {
                 0x1,
                 0x3,

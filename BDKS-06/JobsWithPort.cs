@@ -69,8 +69,7 @@ namespace BDKS_06
         }
 
         public void Write(byte[] wrtSign)
-        {
-            
+        {   
             if (port.IsOpen)
             {
                 port.WriteTimeout = 1000;
@@ -84,16 +83,18 @@ namespace BDKS_06
 
         public byte[] Read()
         {
-            int cnt = port.BytesToRead;
-            byte[] inBuffer = new byte[cnt];
+            byte[] buff = new byte[] { };
+            List<byte> inBuffer = new List<byte>(); 
 
             while (port.BytesToRead > 0)
             {
-                port.Read(inBuffer, 0, cnt);
+                port.Read(buff, 0, buff.Length);
+                inBuffer.AddRange(buff);
+                buff = new byte[] { };
+                Thread.Sleep(100);
             }
-            Thread.Sleep(1000);
 
-            return inBuffer;
+            return inBuffer.ToArray();
         }
     }
 }
