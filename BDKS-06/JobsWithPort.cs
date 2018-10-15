@@ -73,7 +73,7 @@ namespace BDKS_06
             if (port.IsOpen)
             {
                 port.WriteTimeout = 1000;
-                port.Write(wrtSign, 0, wrtSign.Length);
+                port.Write(wrtSign, 0, wrtSign.Length); 
             }
             else
             {
@@ -83,18 +83,29 @@ namespace BDKS_06
 
         public byte[] Read()
         {
-            byte[] buff = new byte[] { };
-            List<byte> inBuffer = new List<byte>(); 
+            byte[] buff = new byte[]{ };
+            List<byte> inBuffer = new List<byte>();
 
-            while (port.BytesToRead > 0)
+            int cnt = 0;
+
+            port.ReadTimeout = 1000;
+
+            while (port.BytesToRead < 0 )
             {
-                port.Read(buff, 0, buff.Length);
+                MessageBox.Show("Lulz "+port.BytesToRead);
+                port.Read(buff,0,buff.Length);
                 inBuffer.AddRange(buff);
-                buff = new byte[] { };
+
                 Thread.Sleep(100);
             }
 
-            return inBuffer.ToArray();
+            foreach (var item in inBuffer)
+            {
+                buff[cnt] = Convert.ToByte(inBuffer[cnt]);
+                cnt++;
+            }
+
+            return buff;
         }
     }
 }

@@ -13,8 +13,22 @@ namespace BDKS_06
 
         static byte[] msg { get; set; }
 
-        public static byte[] Comm2(byte b1 = 0x0, byte b2 = 0x0, byte b3 = 0x0, byte b4 = 0x0)
+        public static byte[] Comm7()
         {
+            msg = new byte[] {
+                0x1,
+                0x7
+            };
+
+            msg = crc.GetCRC(msg);
+            port.Write(msg);
+            msg = port.Read();
+
+            return msg;
+        }
+            public static byte[] Comm2(byte b1 , byte b2, byte b3 , byte b4 )
+        {
+           
             msg =new byte[] {
                 0x1,
                 0x2,
@@ -31,10 +45,11 @@ namespace BDKS_06
             return msg;
         }
 
-        public static byte[] Comm3(ushort b1 = 0x0000,ushort b2 = 0x0000)
+        public static byte[] Comm3(ushort b1 = 0x0000, ushort b2 = 0x0000)
         {
             byte[] bytesOne = BitConverter.GetBytes(b1);
             byte[] bytesTwo = BitConverter.GetBytes(b2);
+            byte[] val;
 
             msg = new byte[] {
                 0x1,
@@ -47,9 +62,9 @@ namespace BDKS_06
 
             msg = crc.GetCRC(msg);
             port.Write(msg);
-            msg = port.Read();
-          
-            return msg;
+            val = port.Read();
+
+            return val;
         }
     }
 }
