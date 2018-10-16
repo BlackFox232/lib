@@ -83,23 +83,25 @@ namespace BDKS_06
 
         public byte[] Read()
         {
-            byte[] buff = new byte[]{ };
+
+            byte[] buff = new byte [ ]{ };
+          
             List<byte> inBuffer = new List<byte>();
 
             int cnt = 0;
 
             port.ReadTimeout = 1000;
 
-            while (port.BytesToRead < 0 )
+            while (port.BytesToRead < 0)
             {
-                MessageBox.Show("Lulz "+port.BytesToRead);
-                port.Read(buff,0,buff.Length);
+                port.Read(buff, 0, buff.Length);
+
                 inBuffer.AddRange(buff);
 
                 Thread.Sleep(100);
             }
 
-            foreach (var item in inBuffer)
+            foreach (byte item in inBuffer)
             {
                 buff[cnt] = Convert.ToByte(inBuffer[cnt]);
                 cnt++;

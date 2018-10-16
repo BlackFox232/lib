@@ -6,36 +6,17 @@ using System.Threading.Tasks;
 
 namespace BDKS_06
 {
-    public class Commands
+    public class LowLevelCommand
     {
         static Port port = new Port() ;
         static Crc16 crc = new Crc16();
 
-        static byte[] msg { get; set; }
-
-        public static byte[] Comm7()
+        public static byte[] Comm(byte b1, byte b2)
         {
-            msg = new byte[] {
-                0x1,
-                0x7
-            };
-
-            msg = crc.GetCRC(msg);
-            port.Write(msg);
-            msg = port.Read();
-
-            return msg;
-        }
-            public static byte[] Comm2(byte b1 , byte b2, byte b3 , byte b4 )
-        {
-           
-            msg =new byte[] {
-                0x1,
-                0x2,
+            
+            byte[] msg = new byte[] {
                 b1,
-                b2,
-                b3,
-                b4
+                b2
             };
 
             msg = crc.GetCRC(msg);
@@ -45,15 +26,14 @@ namespace BDKS_06
             return msg;
         }
 
-        public static byte[] Comm3(ushort b1 = 0x0000, ushort b2 = 0x0000)
+        public static byte[] Comm(byte b1 ,byte b2 ,ushort b3 , ushort b4 )
         {
             byte[] bytesOne = BitConverter.GetBytes(b1);
             byte[] bytesTwo = BitConverter.GetBytes(b2);
-            byte[] val;
-
-            msg = new byte[] {
-                0x1,
-                0x3,
+            
+            byte[] msg = new byte[] {
+                b1,
+                b2,
                 bytesOne[0],
                 bytesOne[1],
                 bytesTwo[0],
@@ -62,9 +42,30 @@ namespace BDKS_06
 
             msg = crc.GetCRC(msg);
             port.Write(msg);
-            val = port.Read();
+            msg = port.Read();
 
-            return val;
+            return msg;
+        }
+
+        public static byte[] Comm(byte b1, byte b2, byte b3, ushort b4, ushort b5)
+        {
+            byte[] bytesOne = BitConverter.GetBytes(b1);
+            byte[] bytesTwo = BitConverter.GetBytes(b2);
+
+            byte[] msg = new byte[] {
+                b1,
+                b2,
+                bytesOne[0],
+                bytesOne[1],
+                bytesTwo[0],
+                bytesTwo[1]
+            };
+
+            msg = crc.GetCRC(msg);
+            port.Write(msg);
+            msg = port.Read();
+
+            return msg;
         }
     }
 }
