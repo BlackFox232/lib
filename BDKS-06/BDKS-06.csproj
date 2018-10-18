@@ -45,7 +45,7 @@
     <Compile Include="LowLevel.cs" />
     <Compile Include="CRC.cs" />
     <Compile Include="HighLevel.cs" />
-    <Compile Include="JobsWithPort.cs" />
+    <Compile Include="Port.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
