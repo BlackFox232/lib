@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Port.cs" />
+    <Compile Include="LowLevel.cs" />
     <Compile Include="CRC.cs" />
     <Compile Include="HighLevel.cs" />
     <Compile Include="JobsWithPort.cs" />

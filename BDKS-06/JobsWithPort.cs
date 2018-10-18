@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO.Ports;
 using System.Windows.Forms;
 using System.Threading;
@@ -83,19 +80,15 @@ namespace BDKS_06
 
         public byte[] Read()
         {
-
             byte[] buff = new byte [ ]{ };
-          
-            List<byte> inBuffer = new List<byte>();
-
             int cnt = 0;
+            List<byte> inBuffer = new List<byte>();
 
             port.ReadTimeout = 1000;
 
             while (port.BytesToRead < 0)
             {
                 port.Read(buff, 0, buff.Length);
-
                 inBuffer.AddRange(buff);
 
                 Thread.Sleep(100);

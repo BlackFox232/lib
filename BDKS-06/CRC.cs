@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BDKS_06
 {
@@ -10,7 +6,6 @@ namespace BDKS_06
     {
         public byte [] GetCRC(byte[] crcValues)
         {
-
             byte[] signature = new byte[crcValues.Length + 2];
 
             for (int i = 0; i < crcValues.Length; i++)
