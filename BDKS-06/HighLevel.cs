@@ -1,6 +1,6 @@
 ﻿namespace BDKS_06
 {
-    class HighLevel
+    public class HighLevel
     {
         public byte Adress { get; set; } = 0x1;
 
@@ -176,7 +176,7 @@
             return val;
         }
 
-        public byte[] ReadSpectreAndReboot()
+        public byte[] ReadRangeAndReboot()
         {
             byte[] val = LowLevel.Comm(
                 Adress,
@@ -185,7 +185,7 @@
             return val;
         }
 
-        public byte[] SzhatiiSpectreAndReboot()
+        public byte[] ReadRangeCompressedAndReboot()
         {
             byte[] val = LowLevel.Comm(
                 Adress,
@@ -194,7 +194,7 @@
             return val;
         }
 
-        public byte[] SpectreSzhatiiVid()
+        public byte[] ReadСompressedRange()
         {
             byte[] val = LowLevel.Comm(
                 Adress,
@@ -202,17 +202,5 @@
 
             return val;
         }
-
-//public byte[] PrimerIskl(byte b2, ushort s2, ushort s4)
-//{
-//    byte[] val = LowLevel.Comm(
-//        Adress,
-//        0x4,
-//        b2,
-//        s2,
-//        s4);
-
-//    return val;
-//}
     }
 }

@@ -65,33 +65,32 @@ namespace BDKS_06
             return portsName;
         }
 
-        public void Write(byte[] wrtSign)
-        {   
+        public int Write(byte[] wrtSign)
+        {
             if (port.IsOpen)
             {
                 port.WriteTimeout = 1000;
-                port.Write(wrtSign, 0, wrtSign.Length); 
+                port.Write(wrtSign, 0, wrtSign.Length);
+                Thread.Sleep(500);
             }
             else
             {
                 MessageBox.Show("Порт закрыт");
             }
+
+            return wrtSign.Length;
         }
 
-        public byte[] Read()
+        public byte[] Read(int n)
         {
-            byte[] buff = new byte [ ]{ };
+            byte[] buff = new byte[port.BytesToRead];
             int cnt = 0;
             List<byte> inBuffer = new List<byte>();
 
-            port.ReadTimeout = 1000;
-
-            while (port.BytesToRead < 0)
+            while (port.BytesToRead > 0)
             {
                 port.Read(buff, 0, buff.Length);
                 inBuffer.AddRange(buff);
-
-                Thread.Sleep(100);
             }
 
             foreach (byte item in inBuffer)
