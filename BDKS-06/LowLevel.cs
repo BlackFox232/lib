@@ -64,15 +64,30 @@ namespace BDKS_06
             byte[] bytesOne = BitConverter.GetBytes(s3);
             byte[] bytesTwo = BitConverter.GetBytes(s4);
             int n;
+            byte[] msg;
 
-            byte[] msg = new byte[] {
+            if (BitConverter.IsLittleEndian)
+            {
+                msg = new byte[] {
+                b1,
+                b2,
+                bytesOne[1],
+                bytesOne[0],
+                bytesTwo[1],
+                bytesTwo[0]
+                };
+            }
+            else
+            {
+                msg = new byte[] {
                 b1,
                 b2,
                 bytesOne[0],
                 bytesOne[1],
                 bytesTwo[0],
                 bytesTwo[1]
-            };
+                };
+            }
 
             msg = crc.GetCRC(msg);
             n = port.Write(msg);
@@ -86,8 +101,23 @@ namespace BDKS_06
             byte[] bytesOne = BitConverter.GetBytes(s4);
             byte[] bytesTwo = BitConverter.GetBytes(s5);
             int n;
+            byte[] msg;
 
-            byte[] msg = new byte[] {
+            if (BitConverter.IsLittleEndian)
+            {
+                msg = new byte[] {
+                b1,
+                b2,
+                b3,
+                bytesOne[1],
+                bytesOne[0],
+                bytesTwo[1],
+                bytesTwo[0]
+                };
+            }
+            else
+            {
+                msg = new byte[] {
                 b1,
                 b2,
                 b3,
@@ -95,7 +125,8 @@ namespace BDKS_06
                 bytesOne[1],
                 bytesTwo[0],
                 bytesTwo[1]
-            };
+                };
+            }
 
             msg = crc.GetCRC(msg);
             n = port.Write(msg);
@@ -110,8 +141,25 @@ namespace BDKS_06
             byte[] bytesTwo = BitConverter.GetBytes(s5);
             byte[] bytesThree = BitConverter.GetBytes(s6);
             int n;
+            byte[] msg;
 
-            byte[] msg = new byte[] {
+            if (BitConverter.IsLittleEndian)
+            {
+                msg = new byte[] {
+                b1,
+                b2,
+                b3,
+                bytesOne[1],
+                bytesOne[0],
+                bytesTwo[1],
+                bytesTwo[0],
+                bytesThree[1],
+                bytesThree[0]
+                };
+            }
+            else
+            {
+                msg = new byte[] {
                 b1,
                 b2,
                 b3,
@@ -121,7 +169,8 @@ namespace BDKS_06
                 bytesTwo[1],
                 bytesThree[0],
                 bytesThree[1]
-            };
+                };
+            }
 
             msg = crc.GetCRC(msg);
             n = port.Write(msg);
@@ -138,8 +187,27 @@ namespace BDKS_06
             byte[] bytesThree = BitConverter.GetBytes(s6);
             byte[] bytesFour = BitConverter.GetBytes(s7);
             int n;
+            byte[] msg;
 
-            byte[] msg = new byte[] {
+            if (BitConverter.IsLittleEndian)
+            {
+                msg = new byte[] {
+                b1,
+                b2,
+                b3,
+                bytesOne[1],
+                bytesOne[0],
+                bytesTwo[1],
+                bytesTwo[0],
+                bytesThree[1],
+                bytesThree[0],
+                bytesFour[1],
+                bytesFour[0]
+                };
+            }
+            else
+            {
+                msg = new byte[] {
                 b1,
                 b2,
                 b3,
@@ -151,7 +219,8 @@ namespace BDKS_06
                 bytesThree[1],
                 bytesFour[0],
                 bytesFour[1]
-            };
+                };
+            }
 
             msg = crc.GetCRC(msg);
             n = port.Write(msg);
@@ -165,8 +234,28 @@ namespace BDKS_06
             byte[] bytesOne = BitConverter.GetBytes(s4);
             byte[] bytesTwo = BitConverter.GetBytes(s5);
             int n;
+            byte[] msg;
 
-            byte[] msg = new byte[] {
+            if (BitConverter.IsLittleEndian)
+            {
+                msg = new byte[] {
+                b1,
+                b2,
+                b3,
+                bytesOne[1],
+                bytesOne[0],
+                bytesTwo[1],
+                bytesTwo[0],
+                b7,
+                b8,
+                b9,
+                b10
+                };
+
+            }
+            else
+            {
+                msg = new byte[] {
                 b1,
                 b2,
                 b3,
@@ -178,8 +267,8 @@ namespace BDKS_06
                 b8,
                 b9,
                 b10
-
-            };
+                };
+            }
 
             msg = crc.GetCRC(msg);
             n = port.Write(msg);
@@ -194,8 +283,31 @@ namespace BDKS_06
             byte[] bytesTwo = BitConverter.GetBytes(s5);
             byte[] bytesThree = BitConverter.GetBytes(s6);
             int n;
+            byte[] msg;
 
-            byte[] msg = new byte[] {
+            if (BitConverter.IsLittleEndian)
+            {
+                msg = new byte[] {
+                b1,
+                b2,
+                b3,
+                bytesOne[1],
+                bytesOne[0],
+                bytesTwo[1],
+                bytesTwo[0],
+                bytesThree[1],
+                bytesThree[0],
+                b7,
+                b8,
+                b9,
+                b10,
+                b11,
+                b12
+                };
+            }
+            else
+            {
+                msg = new byte[] {
                 b1,
                 b2,
                 b3,
@@ -211,7 +323,9 @@ namespace BDKS_06
                 b10,
                 b11,
                 b12
-            };
+                };
+
+            }
 
             msg = crc.GetCRC(msg);
             n = port.Write(msg);
