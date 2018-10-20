@@ -10,7 +10,7 @@ namespace BDKS_06
     {
 
         static SerialPort port = new SerialPort("COM0", 57600, Parity.None, 8, StopBits.Two);
-        static Crc16 crc = new Crc16();
+        static readonly Crc16 crc = new Crc16();
 
         public void OpenPort()
         {
@@ -92,6 +92,8 @@ namespace BDKS_06
                 port.Read(buff, 0, buff.Length);
                 inBuffer.AddRange(buff);
             }
+
+            Thread.Sleep(500);
 
             foreach (byte item in inBuffer)
             {

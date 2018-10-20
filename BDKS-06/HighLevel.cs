@@ -26,7 +26,7 @@
             return val;
         }
 
-        public byte[] Four(ushort s2, ushort s4)
+        public byte[] Fourth(ushort s2, ushort s4)
         {
             byte[] val = LowLevel.Comm(
                 Adress,
@@ -37,7 +37,7 @@
             return val;
         }
 
-        public byte[] Fived(ushort s2, ushort s4)
+        public byte[] Fifth(ushort s2, ushort s4)
         {
             byte[] val = LowLevel.Comm(
                 Adress,
@@ -48,7 +48,7 @@
             return val;
         }
 
-        public byte[] Sixed(ushort s2, ushort s4)
+        public byte[] Sixth(ushort s2, ushort s4)
         {
             byte[] val = LowLevel.Comm(
                 Adress,
@@ -59,7 +59,7 @@
             return val;
         }
 
-        public byte[] Seven()
+        public byte[] Seventh()
         {
             byte[] val = LowLevel.Comm(
                 Adress,
@@ -68,7 +68,7 @@
             return val;
         }
 
-        public byte[] Eight(ushort s2, byte b3, byte b4)
+        public byte[] Eighth(ushort s2, byte b3, byte b4)
         {
             byte[] val = LowLevel.Comm(
                 Adress,
@@ -80,7 +80,7 @@
             return val;
         }
 
-        public byte[] Nine(byte b2, ushort s2, ushort s4, ushort s6)
+        public byte[] Nineth(byte b2, ushort s2, ushort s4, ushort s6)
         {
             byte[] val = LowLevel.Comm(
                 Adress,
@@ -93,7 +93,7 @@
             return val;
         }
 
-        public byte[] Ten(byte b2, ushort s2, ushort s4, ushort s6, byte b7, byte b8, byte b9, byte b10, byte b11, byte b12)
+        public byte[] Tenth(byte b2, ushort s2, ushort s4, ushort s6, byte b7, byte b8, byte b9, byte b10, byte b11, byte b12)
         {
             byte[] val = LowLevel.Comm(
                 Adress,
@@ -112,7 +112,7 @@
             return val;
         }
 
-        public byte[] Eighteen(byte b2, ushort s2, ushort s4)
+        public byte[] Eleventh(byte b2, ushort s2, ushort s4)
         {
             byte[] val = LowLevel.Comm(
                 Adress,
@@ -125,7 +125,7 @@
             return val;
         }
 
-        public byte[] Sixteen(byte b2, ushort s2, ushort s4, ushort s6, ushort s8)
+        public byte[] Sixteenth(byte b2, ushort s2, ushort s4, ushort s6, ushort s8)
         {
             byte[] val = LowLevel.Comm(
                 Adress,
@@ -139,7 +139,7 @@
             return val;
         }
 
-        public byte[] Seventeen()
+        public byte[] Seventeenth()
         {
             byte[] val = LowLevel.Comm(
                 Adress,
@@ -148,7 +148,7 @@
             return val;
         }
 
-        public byte[] Eightteen(byte b2, ushort s2, ushort s4)
+        public byte[] Eightteenth(byte b2, ushort s2, ushort s4)
         {
             byte[] val = LowLevel.Comm(
                 Adress,
@@ -160,7 +160,7 @@
             return val;
         }
 
-        public byte[] Nineteen(byte b2, ushort s2, ushort s4, byte b5, byte b6, byte b7, byte b8)
+        public byte[] Nineteenth(byte b2, ushort s2, ushort s4, byte b5, byte b6, byte b7, byte b8)
         {
             byte[] val = LowLevel.Comm(
                 Adress,

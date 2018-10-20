@@ -4,6 +4,10 @@ namespace BDKS_06
 {
     class Crc16
     {
+        /// <summary>
+        ///Вычислить контрольную сумму через CalcCRC и вставить последними байтами в массив команды
+        /// </summary>
+        
         public byte [] GetCRC(byte[] crcValues)
         {
             byte[] signature = new byte[crcValues.Length + 2];
@@ -42,7 +46,20 @@ namespace BDKS_06
             
             byte[] bytes = BitConverter.GetBytes(crc);
 
-            return bytes;
+            if (BitConverter.IsLittleEndian)
+            {
+                return bytes;
+            }
+            else
+            {
+                byte a;
+
+                a = bytes[0];
+                bytes[0] = bytes[1];
+                bytes[1] = a;
+
+                return bytes;
+            }
         }
     }
 }

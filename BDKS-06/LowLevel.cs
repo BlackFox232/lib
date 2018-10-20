@@ -5,8 +5,11 @@ namespace BDKS_06
     public static class LowLevel
     {
         static Port port = new Port();
-        static Crc16 crc = new Crc16();
+        static readonly Crc16 crc = new Crc16();
 
+        /// <summary>
+        /// Формирует массив с аргументами необходимыми для команды, отправляет их на устройство и читает ответ
+        /// </summary>     
         public static byte[] Comm(byte b1, byte b2)
         {
             int n;
