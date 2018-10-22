@@ -6,7 +6,13 @@ namespace BDKS_06
     {
         static Port port = new Port();
         static readonly Crc16 crc = new Crc16();
-          
+
+        /// <summary>
+        /// Формирует байтовый массив для записи на устройство, записывает и считывает ответ.
+        /// </summary>
+        /// <param name="b1">Адресс</param>
+        /// <param name="b2">Номер команды</param>
+        /// <returns>Массив байтов ответа</returns>
         public static byte[] Comm(byte b1, byte b2)
         {
             int n;

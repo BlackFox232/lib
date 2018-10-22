@@ -37,7 +37,7 @@ namespace BDKS_06
 
         public void ClosePort() => port.Close();
 
-        public SerialPort SetPort(string namePort)
+        public SerialPort SetPortName(string namePort)
         {
             port = new SerialPort(namePort, 57600, Parity.None, 8, StopBits.Two);
 

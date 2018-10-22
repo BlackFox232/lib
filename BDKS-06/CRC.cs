@@ -8,7 +8,7 @@ namespace BDKS_06
         /// Вычислить контрольную сумму через CalcCRC и вставить последними байтами в массив команды
         /// </summary>
         /// <param name="crcValues">массив значений CRC</param>
-        /// <returns>Массив комманды с вставленными значениями CRC</returns>
+        /// <returns>Массив байтов комманды с вставленными значениями CRC</returns>
         public byte [] GetCRC(byte[] crcValues)
         {
             byte[] signature = new byte[crcValues.Length + 2];
@@ -17,7 +17,7 @@ namespace BDKS_06
             {
                 signature[i] = crcValues[i];
             }
-
+            
             crcValues = CalcCRC(crcValues, crcValues.Length);
             signature[signature.Length - 2] = crcValues[0];
             signature[signature.Length - 1] = crcValues[1];

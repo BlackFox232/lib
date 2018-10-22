@@ -2,7 +2,7 @@
 {
     public class HighLevel
     {
-        public byte Adress { get; set; } = 0x1;
+        public static byte Adress { get; set; } = 0x1;
 
         public byte[] Second(ushort s2, ushort s4)
         {
