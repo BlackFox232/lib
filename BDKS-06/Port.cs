@@ -8,7 +8,6 @@ namespace BDKS_06
 {
     public class Port
     {
-
         static SerialPort port = new SerialPort("COM0", 57600, Parity.None, 8, StopBits.Two);
         static readonly Crc16 crc = new Crc16();
 
@@ -42,6 +41,13 @@ namespace BDKS_06
         {
             port = new SerialPort(namePort, 57600, Parity.None, 8, StopBits.Two);
 
+            return port;
+        }
+
+        public SerialPort SetPort(SerialPort _port)
+        {
+            port = _port;
+            
             return port;
         }
 

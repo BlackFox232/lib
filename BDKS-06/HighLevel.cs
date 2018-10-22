@@ -185,7 +185,7 @@
             return val;
         }
 
-        public byte[] ReadRangeCompressedAndReboot()
+        public byte[] ReadCompressedRangeAndReboot()
         {
             byte[] val = LowLevel.Comm(
                 Adress,

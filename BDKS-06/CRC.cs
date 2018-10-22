@@ -5,9 +5,10 @@ namespace BDKS_06
     class Crc16
     {
         /// <summary>
-        ///Вычислить контрольную сумму через CalcCRC и вставить последними байтами в массив команды
+        /// Вычислить контрольную сумму через CalcCRC и вставить последними байтами в массив команды
         /// </summary>
-        
+        /// <param name="crcValues">массив значений CRC</param>
+        /// <returns>Массив комманды с вставленными значениями CRC</returns>
         public byte [] GetCRC(byte[] crcValues)
         {
             byte[] signature = new byte[crcValues.Length + 2];
