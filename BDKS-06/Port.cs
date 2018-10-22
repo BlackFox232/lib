@@ -97,9 +97,9 @@ namespace BDKS_06
             {
                 port.Read(buff, 0, buff.Length);
                 inBuffer.AddRange(buff);
+                Thread.Sleep(200);
             }
-
-            Thread.Sleep(500);
+                    
 
             foreach (byte item in inBuffer)
             {
