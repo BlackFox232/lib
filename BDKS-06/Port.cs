@@ -10,7 +10,11 @@ namespace BDKS_06
     {
         static SerialPort port = new SerialPort("COM0", 57600, Parity.None, 8, StopBits.Two);
         static readonly Crc16 crc = new Crc16();
-
+        public Port() { }
+        public Port(SerialPort _port)
+        {
+            port = _port;
+        }
         public void OpenPort()
         {
             if (!port.IsOpen == true)
@@ -89,25 +93,34 @@ namespace BDKS_06
 
         public byte[] Read(int n)
         {
-            byte[] buff = new byte[port.BytesToRead];
-            int cnt = 0;
-            List<byte> inBuffer = new List<byte>();
-
-            while (port.BytesToRead > 0)
+            try
             {
-                port.Read(buff, 0, buff.Length);
-                inBuffer.AddRange(buff);
-                Thread.Sleep(200);
-            }
-                    
+                byte[] buff = new byte[port.BytesToRead];
+                int cnt = 0;
+                List<byte> inBuffer = new List<byte>();
 
-            foreach (byte item in inBuffer)
+                while (port.BytesToRead > 0)
+                {
+                    port.Read(buff, 0, buff.Length);
+                    inBuffer.AddRange(buff);
+                    Thread.Sleep(200);
+                }
+
+
+                foreach (byte item in inBuffer)
+                {
+                    buff[cnt] = Convert.ToByte(inBuffer[cnt]);
+                    cnt++;
+                }
+
+                return buff;
+            }
+            catch (System.InvalidOperationException)
             {
-                buff[cnt] = Convert.ToByte(inBuffer[cnt]);
-                cnt++;
+                System.Windows.Forms.MessageBox.Show("Устройство отключено или не обнаружено,System.InvalidOperationException ");
+                return null;
             }
-
-            return buff;
+          
         }
     }
 }

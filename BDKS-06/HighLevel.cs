@@ -4,57 +4,57 @@
     {
         public static byte Adress { get; set; } = 0x1;
 
-        public byte[] Second(ushort s2, ushort s4)
+        public byte[] Second(ushort s1, ushort s2)
         {
             byte[] val = LowLevel.Comm(
                 Adress,
                 0x2,
-                s2,
-                s4);
+                s1,
+                s2);
 
             return val;
         }
 
-        public byte[] Third(ushort s2, ushort s4)
+        public byte[] Third(ushort s1, ushort s2)
         {
             byte[] val = LowLevel.Comm(
                 Adress,
                 0x3,
-                s2,
-                s4);
+                s1,
+                s2);
 
             return val;
         }
 
-        public byte[] Fourth(ushort s2, ushort s4)
+        public byte[] Fourth(ushort s1, ushort s2)
         {
             byte[] val = LowLevel.Comm(
                 Adress,
                 0x4,
-                s2,
-                s4);
+                s1,
+                s2);
 
             return val;
         }
 
-        public byte[] Fifth(ushort s2, ushort s4)
+        public byte[] Fifth(ushort s1, ushort s2)
         {
             byte[] val = LowLevel.Comm(
                 Adress,
                 0x5,
-                s2,
-                s4);
+                s1,
+                s2);
 
             return val;
         }
 
-        public byte[] Sixth(ushort s2, ushort s4)
+        public byte[] Sixth(ushort s1, ushort s2)
         {
             byte[] val = LowLevel.Comm(
                 Adress,
                 0x6,
-                s2,
-                s4);
+                s1,
+                s2);
 
             return val;
         }
